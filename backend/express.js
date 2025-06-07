@@ -33,11 +33,12 @@ async function startDatabase() {
         await initializeDatabase();
         app.listen(port, () => {
             console.log(`Hello World`);
-            console.log(`All jokes on http://localhost:${port}/blagues`);
-            console.log(`Only one joke on http://localhost:${port}/blagues/:id`);
-            console.log(`Random joke on http://localhost:${port}/blagues/random`);
-            console.log(`Push joke on http://localhost:${port}/blagues/push`);
-            console.log(`Swagger UI available at http://localhost:${port}/api-docs`);
+            console.log(`All jokes on https://cda-carambar-back.onrender.com
+${port}/blagues`);
+            console.log(`Only one joke on https://cda-carambar-back.onrender.com${port}/blagues/:id`);
+            console.log(`Random joke on https://cda-carambar-back.onrender.com${port}/blagues/random`);
+            console.log(`Push joke on https://cda-carambar-back.onrender.com${port}/blagues/push`);
+            console.log(`Swagger UI available at https://cda-carambar-back.onrender.com${port}/api-docs`);
         });
     } catch (err) {
         console.log(err);
