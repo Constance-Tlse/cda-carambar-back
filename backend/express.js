@@ -1,9 +1,10 @@
 const express = require("express");
-const { initializeDatabase } = require("./sequelize.js"); // Utilisation de 'dataBase' tel que défini dans sequelize.js
+const { initializeDatabase } = require("./sequelize.js");
 const Routes = require("./routes/carambarRoutes.js");
 const bodyParser = require("body-parser");
 const swaggerUi = require('swagger-ui-express');
-const swaggerSpecs = require('./swagger.js'); // Assurez-vous que ce fichier s'appelle bien swagger.js
+const swaggerSpecs = require('./swagger.js');
+const cors = require('cors');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -23,6 +24,8 @@ app.get("/", (req, res) => {
         ]
     });
 });
+
+app.use(cors());
 
 app.use("/blagues", Routes);
 
