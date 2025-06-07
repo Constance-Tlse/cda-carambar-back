@@ -2,8 +2,9 @@
 	"name": "backend",
 	"version": "1.0.0",
 	"description": "",
-	"main": "index.js",
+	"main": "express.js",
 	"scripts": {
+		"start": "node express.js",
 		"biome:check": "npx @biomejs/biome check",
 		"biome:format": "npx @biomejs/biome format --write",
 		"biome:lint:fix": "npx @biomejs/biome check --apply",
