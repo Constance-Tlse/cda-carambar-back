@@ -24,7 +24,7 @@ function App() {
 			const response = await fetch(`${API_BASE_URL}/blagues/random`);
 			if (!response.ok) {
 				const errorData = await response.json();
-				throw new Error(
+				new Error(
 					errorData.message || `HTTP error! status: ${response.status}`,
 				);
 			}
