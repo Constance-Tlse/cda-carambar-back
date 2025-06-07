@@ -35,10 +35,10 @@ async function startDatabase() {
             console.log(`Hello World`);
             console.log(`All jokes on https://cda-carambar-back.onrender.com
 ${port}/blagues`);
-            console.log(`Only one joke on https://cda-carambar-back.onrender.com${port}/blagues/:id`);
-            console.log(`Random joke on https://cda-carambar-back.onrender.com${port}/blagues/random`);
-            console.log(`Push joke on https://cda-carambar-back.onrender.com${port}/blagues/push`);
-            console.log(`Swagger UI available at https://cda-carambar-back.onrender.com${port}/api-docs`);
+            console.log(`Only one joke on https://cda-carambar-back.onrender.com:${port}/blagues/:id`);
+            console.log(`Random joke on https://cda-carambar-back.onrender.com:${port}/blagues/random`);
+            console.log(`Push joke on https://cda-carambar-back.onrender.com:${port}/blagues/push`);
+            console.log(`Swagger UI available at https://cda-carambar-back.onrender.com:${port}/api-docs`);
         });
     } catch (err) {
         console.log(err);
