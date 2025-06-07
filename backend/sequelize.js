@@ -1,5 +1,4 @@
 const { Sequelize, DataTypes } = require("sequelize");
-const e = require("express");
 
 const sequelize = new Sequelize({
 	dialect: "sqlite",
