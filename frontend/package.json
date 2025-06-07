@@ -3,7 +3,7 @@
 	"private": true,
 	"version": "1.0.0",
 	"type": "module",
-	"homepage": "https://Constance-Tlse.github.io/cda-carambar-back",
+	"homepage": "https://Constance-Tlse.github.io/cda-carambar-back/frontend",
 	"scripts": {
 		"dev": "vite",
 		"build": "tsc -b && vite build",
