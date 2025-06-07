@@ -32,13 +32,13 @@ const { body, validationResult } = require("express-validator");
  *                   example: "Server error"
  */
 router.get("/", async (req, res) => {
-	try {
-		const jokes = await Joke.findAll();
-		res.status(200).json(jokes);
-	} catch (error) {
-		console.error(error);
-		res.status(500).json({ message: error.message });
-	}
+ try {
+  const jokes = await Joke.findAll();
+  res.status(200).json(jokes);
+ } catch (error) {
+  console.error(error);
+  res.status(500).json({ message: error.message });
+ }
 });
 
 /**
@@ -78,26 +78,26 @@ router.get("/", async (req, res) => {
  *                   example: "Server error."
  */
 router.get("/random", async (req, res) => {
-	try {
-		const allJokes = await Joke.count();
-		if (allJokes === 0) {
-			return res.status(404).json({ message: "Not Found" });
-		}
-		const randomIndex = Math.floor(Math.random() * allJokes);
+ try {
+  const allJokes = await Joke.count();
+  if (allJokes === 0) {
+   return res.status(404).json({ message: "Not Found" });
+  }
+  const randomIndex = Math.floor(Math.random() * allJokes);
 
-		const joke = await Joke.findOne({
-			offset: randomIndex,
-			order: [["id", "ASC"]],
-		});
+  const joke = await Joke.findOne({
+   offset: randomIndex,
+   order: [["id", "ASC"]],
+  });
 
-		if (!joke) {
-			return res.status(404).json({ message: "Not Found" });
-		}
-		res.status(200).json(joke);
-	} catch (error) {
-		console.error(error);
-		return res.status(500).json({ message: error.message });
-	}
+  if (!joke) {
+   return res.status(404).json({ message: "Not Found" });
+  }
+  res.status(200).json(joke);
+ } catch (error) {
+  console.error(error);
+  return res.status(500).json({ message: error.message });
+ }
 });
 
 /**
@@ -145,16 +145,16 @@ router.get("/random", async (req, res) => {
  *                   example: "Server error."
  */
 router.get("/:id", async (req, res) => {
-	try {
-		const jokes = await Joke.findByPk(req.params.id);
-		if (!jokes) {
-			return res.status(404).json({ message: "Not Found" });
-		}
-		return res.status(200).json(jokes);
-	} catch (error) {
-		console.error(error);
-		return res.status(500).json({ message: error.message });
-	}
+ try {
+  const jokes = await Joke.findByPk(req.params.id);
+  if (!jokes) {
+   return res.status(404).json({ message: "Not Found" });
+  }
+  return res.status(200).json(jokes);
+ } catch (error) {
+  console.error(error);
+  return res.status(500).json({ message: error.message });
+ }
 });
 
 /**
@@ -256,41 +256,41 @@ router.get("/:id", async (req, res) => {
  *           example: "Ouch."
  */
 router.post(
-	"/push",
-	[
-		body("question")
-			.trim()
-			.notEmpty()
-			.withMessage("empty question")
-			.isLength({ min: 5, max: 255 })
-			.withMessage("question needs min 5 characters and 255 characters max")
-			.escape(),
-		body("answer")
-			.trim()
-			.notEmpty()
-			.withMessage("empty answer.")
-			.isLength({ min: 5, max: 255 })
-			.withMessage("question needs min 5 characters and 255 characters max")
-			.escape(),
-	],
-	async (req, res) => {
-		const errors = validationResult(req);
+ "/push",
+ [
+  body("question")
+   .trim()
+   .notEmpty()
+   .withMessage("empty question")
+   .isLength({ min: 5, max: 255 })
+   .withMessage("question needs min 5 characters and 255 characters max")
+   .escape(),
+  body("answer")
+   .trim()
+   .notEmpty()
+   .withMessage("empty answer.")
+   .isLength({ min: 5, max: 255 })
+   .withMessage("question needs min 5 characters and 255 characters max")
+   .escape(),
+ ],
+ async (req, res) => {
+  const errors = validationResult(req);
 
-		if (!errors.isEmpty()) {
-			return res.status(400).json({ errors: errors.array() });
-		}
+  if (!errors.isEmpty()) {
+   return res.status(400).json({ errors: errors.array() });
+  }
 
-		try {
-			const { question, answer } = req.body;
-			const newJoke = await Joke.create({ question, answer });
-			return res
-				.status(201)
-				.json({ message: "Success joke add", joke: newJoke.toJSON() });
-		} catch (error) {
-			console.error(error);
-			return res.status(500).json({ message: error.message });
-		}
-	},
+  try {
+   const { question, answer } = req.body;
+   const newJoke = await Joke.create({ question, answer });
+   return res
+    .status(201)
+    .json({ message: "Success joke add", joke: newJoke.toJSON() });
+  } catch (error) {
+   console.error(error);
+   return res.status(500).json({ message: error.message });
+  }
+ },
 );
 
 module.exports = router;
