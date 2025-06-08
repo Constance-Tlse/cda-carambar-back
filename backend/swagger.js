@@ -10,8 +10,8 @@ const options = {
 		},
 		servers: [
 			{
-				url: "http://localhost:3000",
-				description: "localhost",
+				url: "https://cda-carambar-back.onrender.com",
+				description: "joke on render",
 			},
 		],
 	},
